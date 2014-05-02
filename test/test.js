@@ -10,13 +10,13 @@ describe('#recordDb', function() {
 
 
     var db = pmongo(MONGODB_URL);
-    var today = moment({hour: 0})
+    var today = moment({hour: 0});
 
     before(function(done) {
 
         db.collection('records').drop(function() {
             var prom1 = db.collection('records').insert({artist: "bob", title: "albumtitle", label:"label", releaseDate: new Date(2014, 1, 1)})
-            var prom2 = db.collection('records').insert({artist: "rolf", title: "albumtitle", label:"label", releaseDate: today})
+            var prom2 = db.collection('records').insert({artist: "rolf", title: "albumtitle", label:"label", releaseDate: today.toDate()})
 
             Promise.all([prom1, prom2]).then(function(){
                 console.log("Done")

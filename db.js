@@ -11,7 +11,7 @@ function getAllRecords() {
 
 function getAllFutureRecords() {
     var today = moment({hour: 0})
-    return db.collection('records').find({'releaseDate': {$gte: today}})
+    return db.collection('records').find({'releaseDate': {$gte: today.toDate()}})
 }
 
 module.exports = {
