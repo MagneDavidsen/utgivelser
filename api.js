@@ -3,9 +3,7 @@ var Promise = require('promise');
 
 function getAllRecords(req, res) {
 
-    var recordsPromise = db.getAllRecords().toArray();
-
-   recordsPromise.then(function (values) {
+    db.getAllRecords().toArray().then(function (values) {
         res.send(200, values);
     })
 }
